@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -27,7 +28,9 @@ public class SmartphoneController {
 
     @GetMapping("/")
     public String addPhone(Model model) {
+        List<Producer> producers = producerService.findAll();
         model.addAttribute("smartphone", new Smartphone());
+        model.addAttribute("producers", producers);
         return "addForm";
     }
 

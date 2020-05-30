@@ -3,6 +3,7 @@ package com.example.demo.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class Producer {
     private String country;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDateTime dateOfCreation;
+    private LocalDate dateOfCreation;
 
 
     @OneToMany(mappedBy = "producer", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
@@ -25,7 +26,7 @@ public class Producer {
 
     public Producer(){}
 
-    public Producer(String name, String county, LocalDateTime dateOfCreation){
+    public Producer(String name, String county, LocalDate dateOfCreation){
         this.name = name;
         this.country = county;
         this.dateOfCreation = dateOfCreation;
@@ -55,11 +56,11 @@ public class Producer {
         this.country = country;
     }
 
-    public LocalDateTime getDateOfCreation() {
+    public LocalDate getDateOfCreation() {
         return dateOfCreation;
     }
 
-    public void setDateOfCreation(LocalDateTime dateOfCreation) {
+    public void setDateOfCreation(LocalDate dateOfCreation) {
         this.dateOfCreation = dateOfCreation;
     }
 

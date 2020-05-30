@@ -6,6 +6,7 @@ import com.example.demo.repository.ProducerRepository;
 import com.example.demo.repository.SmartphoneRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,5 +25,9 @@ public class ProducerService {
 
     public Optional<Producer> findByName(String name) {
         return producerRepository.findByName(name);
+    }
+
+    public List<Producer> findAll(){
+        return producerRepository.findAll();
     }
 }

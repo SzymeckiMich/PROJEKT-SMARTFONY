@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @SpringBootApplication
@@ -17,8 +18,11 @@ public class DemoApplication {
         SmartphoneRepository smartphoneRepository = context.getBean(SmartphoneRepository.class);
         ProducerRepository producerRepository = context.getBean(ProducerRepository.class);
 
-        Producer producer = new Producer("SAMSUNG", "South Korea", LocalDateTime.now());
+        Producer producer = new Producer("SAMSUNG", "South Korea", LocalDate.now());
         producerRepository.save(producer);
+
+        Producer producer1 = new Producer("Apple", "USA", LocalDate.now());
+        producerRepository.save(producer1);
 
     }
 
