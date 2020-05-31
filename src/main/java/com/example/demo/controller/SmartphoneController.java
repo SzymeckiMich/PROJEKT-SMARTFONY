@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -45,9 +46,9 @@ public class SmartphoneController {
 
     @PostMapping("/addPhone")
     @ResponseBody
-    public String add(Smartphone smartphone) {
+    public String add(Smartphone smartphone, @RequestParam String producerName) {
 
-        Optional<Producer> producer = producerService.findByName(smartphone.getProducerName());
+        Optional<Producer> producer = producerService.findByName(producerName);
         if (producer.isPresent()) {
             smartphone.setProducer(producer.get());
             smartphoneService.save(smartphone);

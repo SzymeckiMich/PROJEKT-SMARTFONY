@@ -13,7 +13,7 @@
 
     Producent:
     <div class="form-group blu-margin">
-        <select class="form-control" th:field="${smartphone.producerName}" id="dropOperator">
+        <select class="form-control" name="producerName">
             <option value="0">select producer</option>
             <option th:each="producer : ${producers}" th:value="${producer.name}" th:text="${producer.name}"></option>
         </select>

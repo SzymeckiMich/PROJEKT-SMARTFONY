@@ -1,1 +1,1 @@
-INSERT INTO producer(id, name, country, DATE_OF_CREATION) VALUES (5, 'OPPO', 'POLSKA', '2020-05-05' );
+-- INSERT INTO producer(ID, NAME, COUNTRY, DATE_OF_CREATION, LOGO_URL) VALUES (5, 'OPPO', 'POLSKA', '2020-05-05',"https://mobileworld24.pl/wp-content/uploads/2019/06/oppo-logo.jpg" );
