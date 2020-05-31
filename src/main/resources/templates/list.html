@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+<title>Telefonia</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="/style.css"/>
+</head>
+<body>
+
+<div th:each="phone: ${list}">
+
+    <div class="form-row">
+        <div class="col">
+            <img class="phoneImage" style="width: 120px" th:src="${phone.imageUrl}">
+        </div>
+        <div class="col">
+            <span th:text="${phone.model}"></span>
+        </div>
+    </div>
+
+
+</div>
+
+
+</body>
+</html>

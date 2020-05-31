@@ -20,7 +20,7 @@ public class SmartphoneService {
     }
 
     public List<Smartphone> find3Newest(){
-        return smartphoneRepository.findTop1ByOrderByBatteryCapacityDesc();
+        return smartphoneRepository.findTop2ByOrderByBatteryCapacityDesc();
     }
 
 }

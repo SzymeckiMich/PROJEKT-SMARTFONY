@@ -70,5 +70,11 @@ public class SmartphoneController {
         return "dodano";
     }
 
+    @GetMapping("/list")
+    public String list(Model model){
+        model.addAttribute("list", smartphoneService.find3Newest());
+        return "list";
+    }
+
 
 }

@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface SmartphoneRepository extends JpaRepository<Smartphone, Long> {
 
-    public List<Smartphone> findTop1ByOrderByBatteryCapacityDesc();
+    public List<Smartphone> findTop2ByOrderByBatteryCapacityDesc();
 
 }
