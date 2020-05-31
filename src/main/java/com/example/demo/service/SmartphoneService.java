@@ -60,7 +60,7 @@ public class SmartphoneService {
         int elements = (int) smartphoneRepository.count();
 
         for (int i = 0; i < 4; ) {
-            Long id = (long) generator.nextInt(elements);
+            Long id = (long) generator.nextInt(elements) + 1;
             Optional<Smartphone> smartphone = smartphoneRepository.findById(id);
             if (smartphone.isPresent() && !randomSmartphones.contains(smartphone.get())) {
                 randomSmartphones.add(smartphone.get());
