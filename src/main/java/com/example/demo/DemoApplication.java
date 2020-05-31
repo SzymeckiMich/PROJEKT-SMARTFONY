@@ -24,8 +24,6 @@ public class DemoApplication {
 
         Smartphone smartphone = new Smartphone(producer, "A5", 6.4, 4, 64, 3, 64, 1, 20, 3500, "SnapDragon100", "https://d2pa5gi5n2e1an.cloudfront.net/ph/images/special_article/PH_OPPO_A5_2020/13.jpg");
         smartphoneRepository.save(smartphone);
-
-
     }
 
 }

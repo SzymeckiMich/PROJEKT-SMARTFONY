@@ -91,7 +91,7 @@ public class SmartphoneController {
 
     @GetMapping("showAll")
     public String showAll(Model model) {
-        model.addAttribute("list", smartphoneService.findAll());
+        model.addAttribute("list", smartphoneService.findAllByOrderByModelAsc());
         return "list";
     }
 

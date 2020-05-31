@@ -19,7 +19,7 @@
             <a href="/addPhone" class="btn btn-primary btn-lg btn-block">Dodaj telefon</a>
         </div>
         <div class="col">
-            <a href="/showAll" class="btn btn-primary btn-lg btn-block">Pokaż wszystkie modele</a>
+            <a href="/showAll" class="btn btn-primary btn-lg btn-block">Modele alfabetycznie</a>
         </div>
         <div class="col">
             <a href="/producers" class="btn btn-primary btn-lg btn-block">Pokaż producentów</a>
@@ -34,11 +34,10 @@
     <div style="position: relative" class="row">
         <div class="col-3 center" th:each="phone: ${list}">
             <a th:href="@{'/phone?id=' + ${phone.id}}">
-            <img style="height: 160px" th:src="${phone.imageUrl}">
+                <img style="height: 160px" th:src="${phone.imageUrl}">
             </a></br>
             <span th:text="${phone.getProducer().getName()}"></span></br>
             <span th:text="${phone.getModel()}"></span></br>
-            <span th:text="${phone.getProcessor()}"></span></br>
         </div>
     </div>
 

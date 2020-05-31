@@ -22,7 +22,6 @@ public class ProducerService {
         producerRepository.save(producer);
     }
 
-
     public Optional<Producer> findByName(String name) {
         return producerRepository.findByName(name);
     }

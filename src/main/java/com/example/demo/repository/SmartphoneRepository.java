@@ -13,6 +13,8 @@ public interface SmartphoneRepository extends JpaRepository<Smartphone, Long> {
 
     public List<Smartphone> findTop2ByOrderByBatteryCapacityDesc();
 
+    public List<Smartphone> findAllByOrderByModelAsc();
+
     @Transactional
     @Modifying
     @Query(value = "DELETE FROM smartphone WHERE id = :id", nativeQuery = true)

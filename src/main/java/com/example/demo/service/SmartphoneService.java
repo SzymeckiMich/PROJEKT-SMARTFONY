@@ -2,7 +2,6 @@ package com.example.demo.service;
 
 import com.example.demo.model.Smartphone;
 import com.example.demo.repository.SmartphoneRepository;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,8 +32,8 @@ public class SmartphoneService {
         return smartphoneRepository.findTop2ByOrderByBatteryCapacityDesc();
     }
 
-    public List<Smartphone> findAll() {
-        return smartphoneRepository.findAll();
+    public List<Smartphone> findAllByOrderByModelAsc() {
+        return smartphoneRepository.findAllByOrderByModelAsc();
     }
 
     public Optional<Smartphone> findById(Long id) {
@@ -60,10 +59,10 @@ public class SmartphoneService {
         Random generator = new Random();
         int elements = (int) smartphoneRepository.count();
 
-        for (int i = 0; i < 4;) {
+        for (int i = 0; i < 4; ) {
             Long id = (long) generator.nextInt(elements);
             Optional<Smartphone> smartphone = smartphoneRepository.findById(id);
-            if(smartphone.isPresent() && !randomSmartphones.contains(smartphone.get())){
+            if (smartphone.isPresent() && !randomSmartphones.contains(smartphone.get())) {
                 randomSmartphones.add(smartphone.get());
                 i++;
             }
