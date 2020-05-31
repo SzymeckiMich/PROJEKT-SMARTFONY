@@ -120,5 +120,12 @@ public class SmartphoneController {
         }
     }
 
+    @GetMapping("/delete")
+    public String delete(@RequestParam Long id){
+        smartphoneService.delete(id);
+        return "redirect:/";
+    }
+
+
 
 }

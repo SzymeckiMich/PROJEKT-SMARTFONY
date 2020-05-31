@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.model.Smartphone;
 import com.example.demo.repository.SmartphoneRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -41,5 +42,10 @@ public class SmartphoneService {
     @Transactional
     public void update(Smartphone smartphone) {
         entityManager.merge(smartphone);
+    }
+
+
+    public void delete(Long id) {
+        smartphoneRepository.deleteUsingNativeQuery(id);
     }
 }
