@@ -1,1 +1,8 @@
--- INSERT INTO producer(ID, NAME, COUNTRY, DATE_OF_CREATION, LOGO_URL) VALUES (5, 'OPPO', 'POLSKA', '2020-05-05',"https://mobileworld24.pl/wp-content/uploads/2019/06/oppo-logo.jpg" );
+INSERT INTO producer(ID, NAME, COUNTRY, DATE_OF_CREATION, LOGO_URL) VALUES (1, 'Samsung', 'Korea Południowa', '1938-05-05','https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Samsung_Logo.svg/1024px-Samsung_Logo.svg.png');
+INSERT INTO producer(ID, NAME, COUNTRY, DATE_OF_CREATION, LOGO_URL) VALUES (2, 'Apple', 'USA', '1976-04-01','https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1200px-Apple_logo_black.svg.png');
+INSERT INTO producer(ID, NAME, COUNTRY, DATE_OF_CREATION, LOGO_URL) VALUES (3, 'Motorola', 'USA', '1928-09-25','https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Motorola_M_symbol_blue.svg/1200px-Motorola_M_symbol_blue.svg.png');
+INSERT INTO producer(ID, NAME, COUNTRY, DATE_OF_CREATION, LOGO_URL) VALUES (4, 'Huawei', 'Chiny', '1987-09-15','https://logofirmy.net/wp-content/uploads/2020/04/Huawei-Logo.png');
+INSERT INTO producer(ID, NAME, COUNTRY, DATE_OF_CREATION, LOGO_URL) VALUES (5, 'Xiaomi', 'Chiny', '2010-04-06','https://galeriamlociny.pl/app/uploads/wayfinder/url_logo/3144.png');
+INSERT INTO producer(ID, NAME, COUNTRY, DATE_OF_CREATION, LOGO_URL) VALUES (6, 'Sony', 'Japonia', '1946-05-07','https://motogaraz.in/wp-content/uploads/2016/07/sony-logo.jpg');
+INSERT INTO producer(ID, NAME, COUNTRY, DATE_OF_CREATION, LOGO_URL) VALUES (7, 'HTC', 'Chiny', '1997-05-15','https://www.telepolis.pl/images/2020/02/htc-logo.jpg');
+INSERT INTO producer(ID, NAME, COUNTRY, DATE_OF_CREATION, LOGO_URL) VALUES (8, 'OnePlus', 'Chiny', '2013-12-16','https://mobileworld24.pl/wp-content/uploads/2020/03/OnePlus-logo-2020.jpg');

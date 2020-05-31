@@ -10,9 +10,6 @@ public class Smartphone {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    private String producerName;
-
-
     @ManyToOne
     private Producer producer;
 
@@ -34,7 +31,6 @@ public class Smartphone {
     }
 
     public Smartphone(Producer producer, String model, double screenSize, int ram, int storage, int rearCameras, long mainRearCameraResolution, int frontCameras, long mainFrontCameraResolution, int batteryCapacity, String processor, String imageUrl) {
-//        this.producerName = producerName;
         this.producer = producer;
         this.model = model;
         this.screenSize = screenSize;
@@ -64,14 +60,6 @@ public class Smartphone {
     public void setMainFrontCameraResolution(long mainFrontCameraResolution) {
         this.mainFrontCameraResolution = mainFrontCameraResolution;
     }
-
-//    public String getProducerName() {
-//        return producerName;
-//    }
-//
-//    public void setProducerName(String producerName) {
-//        this.producerName = producerName;
-//    }
 
     public Long getId() {
         return id;
