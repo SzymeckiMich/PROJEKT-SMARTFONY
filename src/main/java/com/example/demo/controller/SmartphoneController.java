@@ -39,6 +39,8 @@ public class SmartphoneController {
     @GetMapping("/addPhone")
     public String addPhone(Model model) {
         List<Producer> producers = producerService.findAll();
+//        Smartphone smartphoneToAdd = new Smartphone();
+//        smartphoneToAdd.setProducer(new Producer());
         model.addAttribute("smartphone", new Smartphone());
         model.addAttribute("producers", producers);
         model.addAttribute("mode", "add");
@@ -71,7 +73,8 @@ public class SmartphoneController {
     }
 
     @PostMapping("/editPhone")
-    public String editPhone(Smartphone smartphone){
+    public String editPhone(Smartphone smartphone, @RequestParam String producerName){
+        smartphone.setProducer(producerService.findByName(producerName).get());
         smartphoneService.update(smartphone);
         return "redirect:/";
 
