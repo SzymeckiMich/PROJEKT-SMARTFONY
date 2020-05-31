@@ -28,9 +28,8 @@ public class SmartphoneController {
 
     @GetMapping("/")
     public String home(Model model) {
-        List<Smartphone> phone = smartphoneService.find3Newest();
-        Smartphone smartphone = phone.get(0);
-        model.addAttribute("phone", smartphone);
+        List<Smartphone> phones = smartphoneService.find4Random();
+        model.addAttribute("list", phones);
         return "home";
     }
 

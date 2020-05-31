@@ -8,8 +8,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 @Service
 public class SmartphoneService {
@@ -51,5 +53,21 @@ public class SmartphoneService {
 
     public List<Smartphone> findByProducer(Long id) {
         return smartphoneRepository.findByProducerId(id);
+    }
+
+    public List<Smartphone> find4Random() {
+        List<Smartphone> randomSmartphones = new ArrayList<>();
+        Random generator = new Random();
+        int elements = (int) smartphoneRepository.count();
+
+        for (int i = 0; i < 4;) {
+            Long id = (long) generator.nextInt(elements);
+            Optional<Smartphone> smartphone = smartphoneRepository.findById(id);
+            if(smartphone.isPresent() && !randomSmartphones.contains(smartphone.get())){
+                randomSmartphones.add(smartphone.get());
+                i++;
+            }
+        }
+        return randomSmartphones;
     }
 }
