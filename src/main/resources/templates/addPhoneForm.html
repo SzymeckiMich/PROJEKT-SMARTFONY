@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodaj</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+</head>
+<body>
+
+<form method="post" action="/addPhone" th:object="${smartphone}">
+
+    Producent:
+    <div class="form-group blu-margin">
+        <select class="form-control" th:field="${smartphone.producerName}" id="dropOperator">
+            <option value="0">select producer</option>
+            <option th:each="producer : ${producers}" th:value="${producer.name}" th:text="${producer.name}"></option>
+        </select>
+    </div>
+
+
+    Model: <input type="text" th:field="*{model}">
+   </br>>RAM: <input type="number" th:field="*{ram}">
+   </br>>Pamięć na pliki: <input type="number" th:field="*{storage}">
+   </br>>Ilość sparatów z tyłu: <input type="number" th:field="*{rearCameras}">
+   </br>>Rozdzielczość głównego aparatu z tyłu<input type="number" th:field="*{mainFrontCameraResolution}">
+   </br>>Ilość aoaratów z przodu <input type="number" th:field="*{frontCameras}">
+   </br>>Rozdzielczość głównego aparatu z przodu <input type="number" th:field="*{mainFrontCameraResolution}">
+   </br>>Pojemność baterii: <input type="number" th:field="*{batteryCapacity}">
+   </br>>Producent procesora <input type="text" th:field="*{processor}">
+   </br>>Link do zdjęcia: <input type="url" th:field="*{imageUrl}">
+
+
+    <input type="submit" value="Wyślij">
+</form>
+
+
+</body>
+</html>

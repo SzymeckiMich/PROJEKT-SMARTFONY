@@ -4,6 +4,8 @@ import com.example.demo.model.Smartphone;
 import com.example.demo.repository.SmartphoneRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SmartphoneService {
 
@@ -17,5 +19,8 @@ public class SmartphoneService {
         smartphoneRepository.save(smartphone);
     }
 
+    public List<Smartphone> find3Newest(){
+        return smartphoneRepository.findTop1ByOrderByBatteryCapacityDesc();
+    }
 
 }

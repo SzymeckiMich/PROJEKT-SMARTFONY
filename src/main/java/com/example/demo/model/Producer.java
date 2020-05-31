@@ -16,6 +16,7 @@ public class Producer {
 
     private String name;
     private String country;
+    private String logoUrl;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateOfCreation;
@@ -26,10 +27,11 @@ public class Producer {
 
     public Producer(){}
 
-    public Producer(String name, String county, LocalDate dateOfCreation){
+    public Producer(String name, String county, LocalDate dateOfCreation, String url){
         this.name = name;
         this.country = county;
         this.dateOfCreation = dateOfCreation;
+        this.logoUrl = url;
     }
 
     public Long getId() {

@@ -9,21 +9,14 @@
 </head>
 <body>
 
-<form method="post" action="/add" th:object="${smartphone}">
-
-
-    <div class="form-group blu-margin">
-        <select class="form-control" th:field="${smartphone.producerName}"  id="dropOperator">
-            <option value="0">select producer</option>
-            <option th:each="producer : ${producers}" th:value="${producer.name}" th:text="${producer.name}"></option>
-        </select>
-    </div>
+<form method="post" action="/addProducer" th:object="${producer}">
 
 
 
+    <input type="text" th:field="*{name}">
+    <input type="text" th:field="*{country}">
+    <input type="date" th:field="*{dateOfCreation}">
 
-
-    <input type="text" th:field="*{model}">
     <input type="submit" value="Wyślij">
 </form>
 

@@ -27,26 +27,47 @@ public class SmartphoneController {
     }
 
     @GetMapping("/")
+        public String home(Model model){
+        List<Smartphone> phone = smartphoneService.find3Newest();
+        Smartphone smartphone = phone.get(0);
+        model.addAttribute("phone", smartphone);
+            return "home";
+        }
+
+
+    @GetMapping("/addPhone")
     public String addPhone(Model model) {
         List<Producer> producers = producerService.findAll();
         model.addAttribute("smartphone", new Smartphone());
         model.addAttribute("producers", producers);
-        return "addForm";
+        return "addPhoneForm";
     }
 
-    @PostMapping("/add")
+    @PostMapping("/addPhone")
     @ResponseBody
-    public String add(Smartphone smartphone){
+    public String add(Smartphone smartphone) {
 
         Optional<Producer> producer = producerService.findByName(smartphone.getProducerName());
-        if(producer.isPresent()){
+        if (producer.isPresent()) {
             smartphone.setProducer(producer.get());
             smartphoneService.save(smartphone);
             return "Dodano chyba";
         }
 
         return "Siusiak";
+    }
 
+    @GetMapping("/addProducer")
+    public String addProducer(Model model) {
+        model.addAttribute("producer", new Producer());
+        return "addProducerForm";
+    }
+
+    @PostMapping("/addProducer")
+    @ResponseBody
+    public String addProducer(Producer producer) {
+        producerService.save(producer);
+        return "dodano";
     }
 
 
