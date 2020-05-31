@@ -28,12 +28,12 @@ public class SmartphoneController {
     }
 
     @GetMapping("/")
-        public String home(Model model){
+    public String home(Model model) {
         List<Smartphone> phone = smartphoneService.find3Newest();
         Smartphone smartphone = phone.get(0);
         model.addAttribute("phone", smartphone);
-            return "home";
-        }
+        return "home";
+    }
 
 
     @GetMapping("/addPhone")
@@ -41,6 +41,7 @@ public class SmartphoneController {
         List<Producer> producers = producerService.findAll();
         model.addAttribute("smartphone", new Smartphone());
         model.addAttribute("producers", producers);
+        model.addAttribute("mode", "add");
         return "addPhoneForm";
     }
 
@@ -55,8 +56,28 @@ public class SmartphoneController {
             return "Dodano chyba";
         }
 
-        return "Siusiak";
+        return "Fiasko :C";
     }
+
+    @GetMapping("/editPhone")
+    public String editPhone(Model model, @RequestParam Long id){
+        List<Producer> producers = producerService.findAll();
+        Smartphone smartphone = smartphoneService.findById(id).get();
+        model.addAttribute("smartphone", smartphone);
+        model.addAttribute("mode", "edit");
+        model.addAttribute("producers", producers);
+
+        return "addPhoneForm";
+    }
+
+    @PostMapping("/editPhone")
+    public String editPhone(Smartphone smartphone){
+        smartphoneService.update(smartphone);
+        return "redirect:/";
+
+    }
+
+
 
     @GetMapping("/addProducer")
     public String addProducer(Model model) {
@@ -72,9 +93,28 @@ public class SmartphoneController {
     }
 
     @GetMapping("/list")
-    public String list(Model model){
+    public String list(Model model) {
         model.addAttribute("list", smartphoneService.find3Newest());
         return "list";
+    }
+
+    @GetMapping("showAll")
+    public String showAll(Model model) {
+        model.addAttribute("list", smartphoneService.findAll());
+        return "list";
+    }
+
+    @GetMapping("/phone")
+    public String details(@RequestParam Long id, Model model) {
+
+        Optional<Smartphone> smartphone = smartphoneService.findById(id);
+
+        if (smartphone.isPresent()) {
+            model.addAttribute("phone", smartphone.get());
+            return "phonePage"; // -> /resources/templates/animal.html
+        } else {
+            return "redirect:/";
+        }
     }
 
 

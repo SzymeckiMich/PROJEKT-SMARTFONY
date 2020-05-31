@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Smartphone</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="/style.css"/>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-9">
+            <img style="height: 150px; width: auto" th:src="${phone.imageUrl}">
+            <span th:text="${phone.getProducer().getName()}"></span> <span th:text="${phone.model}"></span>
+        </div>
+
+        <div class="col-3">
+            </br>
+            <a type="button" style="width: 200px" th:href="@{|/editPhone?id=${phone.id}|}" class="btn btn-primary btn-lg btn-block">Edytuj</a>
+            <a type="button" style="width: 200px; background-color: red; border-style: hidden" href="/todolist"
+               class="btn btn-primary btn-lg btn-block">Usuń</a>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Nazwa parametru</th>
+            <th scope="col">Wartość</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Rozmiar ekranu</td>
+            <td th:text="|${phone.screenSize} ''|"></td>
+        </tr>
+        <tr>
+            <td>Procesor</td>
+            <td th:text="|${phone.processor}|"></td>
+        </tr>
+        <tr>
+            <td>Pamięć RAM</td>
+            <td th:text="|${phone.ram} GB|"></td>
+        </tr>
+        <tr>
+            <td>Pamięć wbudowana</td>
+            <td th:text="|${phone.storage} GB|"></td>
+        </tr>
+        <tr>
+            <td>Ilość aparatów z tyłu</td>
+            <td th:text="|${phone.rearCameras}|"></td>
+        </tr>
+        <tr>
+            <td>Matryca główna</td>
+            <td th:text="|${phone.mainRearCameraResolution} MPx|"></td>
+        </tr>
+        <tr>
+            <td>Ilość aparatów z przodu</td>
+            <td th:text="|${phone.frontCameras}|"></td>
+        </tr>
+        <tr>
+            <td>Główna matryca z przodu</td>
+            <td th:text="|${phone.mainFrontCameraResolution} MPx|"></td>
+        </tr>
+        <tr>
+            <td>Pojemność baterii</td>
+            <td th:text="|${phone.batteryCapacity} mAh|"></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+</div>
+
+</body>
+</html>

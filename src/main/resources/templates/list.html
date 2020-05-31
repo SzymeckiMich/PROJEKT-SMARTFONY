@@ -8,20 +8,23 @@
 </head>
 <body>
 
-<div th:each="phone: ${list}">
+<!--<div th:each="phone: ${list}">-->
+<div class="container">
+    <a th:href="@{'/phone?id=' + ${phone.id}}" class="phone" th:each="phone: ${list}">
 
-    <div class="form-row">
-        <div class="col">
-            <img class="phoneImage" style="width: 120px" th:src="${phone.imageUrl}">
+        <div class="form-row">
+            <div class="col">
+                <img class="phoneImage" style="height: 120px; width: auto" th:src="${phone.imageUrl}">
+            </div>
+            <div class="col">
+                <span th:text="${phone.getProducer().getName()}"></span></br>
+                <span th:text="${phone.model}"></span>
+            </div>
         </div>
-        <div class="col">
-            <span th:text="${phone.model}"></span>
-        </div>
-    </div>
 
-
+    </a>
+    <!--</div>-->
 </div>
-
 
 </body>
 </html>
