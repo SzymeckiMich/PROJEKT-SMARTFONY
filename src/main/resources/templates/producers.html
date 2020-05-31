@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+<title>Producenci</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="/style.css"/>
+</head>
+<body>
+
+<header th:insert="navbar.html :: navbar"></header>
+
+<div class="container">
+    <div th:each="producer: ${list}">
+        <div class="row">
+            <div class="col-2">
+                <span th:text="${producer.name}"></span></br>
+                <span th:text="${producer.country}"></span></br>
+                <span th:text="${producer.dateOfCreation}"></span>
+                </br>
+            </div>
+            <div class="col-5">
+                <img  class="center" style="height: 120px; width: auto; position: relative " th:src="${producer.logoUrl}">
+            </div>
+            <div class="col-3">
+            <a  class="btn btn-primary btn-lg btn-block" th:href="@{|/findByProducer?id=${producer.id}|}">Pokaż urządzenia producenta</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

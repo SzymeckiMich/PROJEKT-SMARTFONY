@@ -48,4 +48,8 @@ public class SmartphoneService {
     public void delete(Long id) {
         smartphoneRepository.deleteUsingNativeQuery(id);
     }
+
+    public List<Smartphone> findByProducer(Long id) {
+        return smartphoneRepository.findByProducerId(id);
+    }
 }

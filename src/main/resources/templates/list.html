@@ -8,22 +8,22 @@
 </head>
 <body>
 
-<!--<div th:each="phone: ${list}">-->
+<header th:insert="navbar.html :: navbar"></header>
+
 <div class="container">
     <a th:href="@{'/phone?id=' + ${phone.id}}" class="phone" th:each="phone: ${list}">
 
         <div class="form-row">
-            <div class="col">
+            <div class="col-2">
                 <img class="phoneImage" style="height: 120px; width: auto" th:src="${phone.imageUrl}">
             </div>
-            <div class="col">
+            <div class="col-10">
                 <span th:text="${phone.getProducer().getName()}"></span></br>
                 <span th:text="${phone.model}"></span>
             </div>
         </div>
 
     </a>
-    <!--</div>-->
 </div>
 
 </body>

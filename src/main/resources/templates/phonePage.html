@@ -10,17 +10,25 @@
 </head>
 <body>
 
+<header th:insert="navbar.html :: navbar"></header>
+
+
 <div class="container">
     <div class="row">
-        <div class="col-9">
+        <div class="col-2">
             <img style="height: 150px; width: auto" th:src="${phone.imageUrl}">
-            <span th:text="${phone.getProducer().getName()}"></span> <span th:text="${phone.model}"></span>
+        </div>
+        <div class="col-7">
+            <h3 th:text="${phone.getProducer().getName()}"></h3>
+            <h3 th:text="${phone.model}"></h3>
         </div>
 
         <div class="col-3">
             </br>
-            <a type="button" style="width: 200px" th:href="@{|/editPhone?id=${phone.id}|}" class="btn btn-primary btn-lg btn-block">Edytuj</a>
-            <a type="button" style="width: 200px; background-color: red; border-style: hidden" th:href="@{|/delete?id=${phone.id}|}"
+            <a type="button" style="width: 200px" th:href="@{|/editPhone?id=${phone.id}|}"
+               class="btn btn-primary btn-lg btn-block">Edytuj</a>
+            <a type="button" style="width: 200px; background-color: red; border-style: hidden"
+               th:href="@{|/delete?id=${phone.id}|}"
                class="btn btn-primary btn-lg btn-block">Usuń</a>
         </div>
     </div>

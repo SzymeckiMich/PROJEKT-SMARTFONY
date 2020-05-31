@@ -20,13 +20,21 @@ public class Producer {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateOfCreation;
 
+    public String getLogoUrl() {
+        return logoUrl;
+    }
+
+    public void setLogoUrl(String logoUrl) {
+        this.logoUrl = logoUrl;
+    }
 
     @OneToMany(mappedBy = "producer", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private List<Smartphone> smartphones;
 
-    public Producer(){}
+    public Producer() {
+    }
 
-    public Producer(String name, String county, LocalDate dateOfCreation, String url){
+    public Producer(String name, String county, LocalDate dateOfCreation, String url) {
         this.name = name;
         this.country = county;
         this.dateOfCreation = dateOfCreation;

@@ -18,7 +18,6 @@ public interface SmartphoneRepository extends JpaRepository<Smartphone, Long> {
     @Query(value = "DELETE FROM smartphone WHERE id = :id", nativeQuery = true)
     void deleteUsingNativeQuery(@Param("id") Long contains);
 
-    @Transactional
-    public void removeById(Long id);
+    public List<Smartphone> findByProducerId(Long id);
 
 }

@@ -9,40 +9,46 @@
 </head>
 <body>
 
-<form method="post" th:action="${mode == 'edit' ? '/editPhone' : '/addPhone'} " th:object="${smartphone}">
+<header th:insert="navbar.html :: navbar"></header>
 
-    <input type="hidden" th:field="*{id}"/>
-    <input type="hidden" th:field="*{producer}">
+<div class="container">
 
+    <form method="post" th:action="${mode == 'edit' ? '/editPhone' : '/addPhone'} " th:object="${smartphone}">
 
-    Producent
-    <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Producent</label>
-        <div class="col-sm-10">
-            <select class="form-control" name="producerName" >
-                <option selected th:value="${mode == 'edit' ? smartphone.producer.name : null}">Wybierz..</option>
-                <option th:each="producer : ${producers}" th:value="${producer.name}" th:text="${producer.name}"></option>-->
-            </select>
+        <input type="hidden" th:field="*{id}"/>
+        <input type="hidden" th:field="*{producer}">
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Producent</label>
+            <div class="col-sm-10">
+                <select class="form-control" name="producerName">
+                    <option selected th:value="${mode == 'edit' ? smartphone.producer.name : null}">Wybierz..</option>
+                    <option th:each="producer : ${producers}" th:value="${producer.name}"
+                            th:text="${producer.name}"></option>
+                    -->
+                </select>
+            </div>
         </div>
-    </div>
+
+        Model: <input class="form-control" type="text" th:field="*{model}"></br>
+        RAM: <input class="form-control" type="number" th:field="*{ram}"></br>
+        Pamięć na pliki: <input class="form-control" type="number" th:field="*{storage}"></br>
+        Ilość aparatów z tyłu: <input class="form-control" type="number" th:field="*{rearCameras}"></br>
+        Przekątna ekranu: <input class="form-control" type="number" step="0.01" th:field="*{screenSize}"></br>
+        Rozdzielczość głównego aparatu z tyłu<input class="form-control" type="number"
+                                                    th:field="*{mainRearCameraResolution}"></br>
+        Ilość aparatów z przodu <input class="form-control" type="number" th:field="*{frontCameras}"></br>
+        Rozdzielczość głównego aparatu z przodu <input class="form-control" type="number"
+                                                       th:field="*{mainFrontCameraResolution}"></br>
+        Pojemność baterii: <input class="form-control" type="number" th:field="*{batteryCapacity}"></br>
+        Producent procesora <input class="form-control" type="text" th:field="*{processor}"></br>
+        Link do zdjęcia: <input class="form-control" type="url" th:field="*{imageUrl}"></br>
 
 
-    Model: <input type="text" th:field="*{model}">
-    </br>>RAM: <input type="number" th:field="*{ram}">
-    </br>>Pamięć na pliki: <input type="number" th:field="*{storage}">
-    </br>>Ilość sparatów z tyłu: <input type="number" th:field="*{rearCameras}">
-    </br>Przekątna ekranu: <input type="number" step="0.01" th:field="*{screenSize}">
-    </br>>Rozdzielczość głównego aparatu z tyłu<input type="number" th:field="*{mainRearCameraResolution}">
-    </br>>Ilość aoaratów z przodu <input type="number" th:field="*{frontCameras}">
-    </br>>Rozdzielczość głównego aparatu z przodu <input type="number" th:field="*{mainFrontCameraResolution}">
-    </br>>Pojemność baterii: <input type="number" th:field="*{batteryCapacity}">
-    </br>>Producent procesora <input type="text" th:field="*{processor}">
-    </br>>Link do zdjęcia: <input type="url" th:field="*{imageUrl}">
+        <input class="btn btn-primary" type="submit" value="Wyślij">
+    </form>
 
-
-    <input type="submit" value="Wyślij">
-</form>
-
+</div>
 
 </body>
 </html>

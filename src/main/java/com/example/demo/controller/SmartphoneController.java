@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 import java.util.Optional;
@@ -35,12 +34,9 @@ public class SmartphoneController {
         return "home";
     }
 
-
     @GetMapping("/addPhone")
     public String addPhone(Model model) {
         List<Producer> producers = producerService.findAll();
-//        Smartphone smartphoneToAdd = new Smartphone();
-//        smartphoneToAdd.setProducer(new Producer());
         model.addAttribute("smartphone", new Smartphone());
         model.addAttribute("producers", producers);
         model.addAttribute("mode", "add");
@@ -48,21 +44,18 @@ public class SmartphoneController {
     }
 
     @PostMapping("/addPhone")
-    @ResponseBody
     public String add(Smartphone smartphone, @RequestParam String producerName) {
 
         Optional<Producer> producer = producerService.findByName(producerName);
         if (producer.isPresent()) {
             smartphone.setProducer(producer.get());
             smartphoneService.save(smartphone);
-            return "Dodano chyba";
         }
-
-        return "Fiasko :C";
+        return "redirect:/";
     }
 
     @GetMapping("/editPhone")
-    public String editPhone(Model model, @RequestParam Long id){
+    public String editPhone(Model model, @RequestParam Long id) {
         List<Producer> producers = producerService.findAll();
         Smartphone smartphone = smartphoneService.findById(id).get();
         model.addAttribute("smartphone", smartphone);
@@ -73,14 +66,11 @@ public class SmartphoneController {
     }
 
     @PostMapping("/editPhone")
-    public String editPhone(Smartphone smartphone, @RequestParam String producerName){
+    public String editPhone(Smartphone smartphone, @RequestParam String producerName) {
         smartphone.setProducer(producerService.findByName(producerName).get());
         smartphoneService.update(smartphone);
         return "redirect:/";
-
     }
-
-
 
     @GetMapping("/addProducer")
     public String addProducer(Model model) {
@@ -89,10 +79,9 @@ public class SmartphoneController {
     }
 
     @PostMapping("/addProducer")
-    @ResponseBody
     public String addProducer(Producer producer) {
         producerService.save(producer);
-        return "dodano";
+        return "redirect:/";
     }
 
     @GetMapping("/list")
@@ -109,9 +98,7 @@ public class SmartphoneController {
 
     @GetMapping("/phone")
     public String details(@RequestParam Long id, Model model) {
-
         Optional<Smartphone> smartphone = smartphoneService.findById(id);
-
         if (smartphone.isPresent()) {
             model.addAttribute("phone", smartphone.get());
             return "phonePage"; // -> /resources/templates/animal.html
@@ -121,11 +108,20 @@ public class SmartphoneController {
     }
 
     @GetMapping("/delete")
-    public String delete(@RequestParam Long id){
+    public String delete(@RequestParam Long id) {
         smartphoneService.delete(id);
         return "redirect:/";
     }
 
+    @GetMapping("/producers")
+    public String producers(Model model) {
+        model.addAttribute("list", producerService.findAll());
+        return "producers";
+    }
 
-
+    @GetMapping("/findByProducer")
+    public String findByProducer(@RequestParam Long id, Model model) {
+        model.addAttribute("list", smartphoneService.findByProducer(id));
+        return "list";
+    }
 }
